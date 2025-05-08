@@ -20,9 +20,28 @@ process sayHello {
 }
 
 /*
+ * Use a text replacement tool to convert the greeting to uppercase
+ */
+process convertToUpper {
+
+    publishDir 'results', mode: 'copy'
+
+    input:
+        path input_file
+
+    output:
+        path "UPPER-${input_file}"
+
+    script:
+    """
+    cat '$input_file' | tr '[a-z]' '[A-Z]' > 'UPPER-${input_file}'
+    """
+}
+
+/*
  * Pipeline parameters
  */
-params.greeting = 'greetings.csv'
+params.greeting = 'hello-nextflow/greetings.csv'
 
 workflow {
 
@@ -33,4 +52,7 @@ workflow {
 
     // emit a greeting
     sayHello(greeting_ch)
+
+    // convert the greeting to uppercase
+    convertToUpper(sayHello.out)
 }
