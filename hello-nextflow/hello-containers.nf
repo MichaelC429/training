@@ -3,13 +3,15 @@
 /*
  * Pipeline parameters
  */
-params.greeting = 'greetings.csv'
+params.greeting = 'hello-nextflow/greetings.csv'
 params.batch = 'test-batch'
+params.character = 'turkey'
 
 // Include modules
-include { sayHello } from './modules/sayHello.nf'
-include { convertToUpper } from './modules/convertToUpper.nf'
-include { collectGreetings } from './modules/collectGreetings.nf'
+include { sayHello } from '/workspaces/training/modules/sayHello.nf'
+include { convertToUpper } from '/workspaces/training/modules/convertToUpper.nf'
+include { collectGreetings } from '/workspaces/training/modules/collectGreetings.nf'
+include { cowpy } from '/workspaces/training/modules/cowpy.nf'
 
 workflow {
 
@@ -29,4 +31,7 @@ workflow {
 
     // emit a message about the size of the batch
     collectGreetings.out.count.view { "There were $it greetings in this batch" }
+
+    // generate ASCII art of the greetings with cowpy
+    cowpy(collectGreetings.out.outfile, params.character)
 }

@@ -3,15 +3,15 @@
 /*
  * Pipeline parameters
  */
-params.greeting = 'greetings.csv'
+params.greeting = 'hello-nextflow/greetings.csv'
 params.batch = 'test-batch'
 params.character = 'turkey'
 
 // Include modules
-include { sayHello } from './modules/sayHello.nf'
-include { convertToUpper } from './modules/convertToUpper.nf'
-include { collectGreetings } from './modules/collectGreetings.nf'
-include { cowpy } from './modules/cowpy.nf'
+include { sayHello } from '/workspaces/training/modules/sayHello.nf'
+include { convertToUpper } from '/workspaces/training/modules/convertToUpper.nf'
+include { collectGreetings } from '/workspaces/training/modules/collectGreetings.nf'
+include { cowpy } from '/workspaces/training/modules/cowpy.nf'
 
 workflow {
 
