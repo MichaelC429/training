@@ -4,7 +4,7 @@
  * Pipeline parameters
  */
 
-// Primary input (file of input files, one per line)
+// Primary inpuexitt (file of input files, one per line)
 params.reads_bam = "${projectDir}/data/sample_bams.txt"
 
 // Output directory

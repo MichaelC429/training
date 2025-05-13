@@ -1,0 +1,25 @@
+ERROR ~ Error executing process > 'SAMTOOLS_INDEX'
+
+Caused by:
+  Process `SAMTOOLS_INDEX` terminated with an error exit status (127)
+
+
+Command executed:
+
+  samtools index 'reads_mother.bam'
+
+Command exit status:
+  127
+
+Command output:
+  (empty)
+
+Command error:
+  .command.sh: line 2: samtools: command not found
+
+Work dir:
+  /workspaces/training/.nf-test/tests/17fcd16d5882e7b0be0198eba13080c2/work/a3/cc92e3798a902d149a186aba0fd55f
+
+Tip: view the complete command output by changing to the process work dir and entering the command `cat .command.out`
+
+ -- Check '/workspaces/training/.nf-test/tests/17fcd16d5882e7b0be0198eba13080c2/meta/nextflow.log' file for details
